@@ -1,0 +1,18 @@
+{
+    "name": "sarah/rick-morty-clean",
+    "description": "Projeto de estudos de Clean Architecture com Slim e Guzzle",
+    "type": "project",
+    "require": {
+        "php": "^8.3",
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "guzzlehttp/guzzle": "^7.9",
+        "php-di/php-di": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
