@@ -1,22 +1,7 @@
-version: '3.8'
-
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: app
-    restart: always
-    working_dir: /var/www/html
-    volumes:
-      - .:/var/www/html
-    networks:
-      - rick-morty-net
-
   nginx:
     image: nginx:alpine
-    container_name: nginx
-    restart: always
+    container_name: rick-morty-nginx  
     ports:
       - "8080:80"
     volumes:
@@ -24,8 +9,18 @@ services:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - app
-    networks:
+    networks:     
       - rick-morty-net
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rick-morty-app    
+    volumes:
+      - .:/var/www/html
+    networks:
+      - rick-morty-net                
 
 networks:
   rick-morty-net:
