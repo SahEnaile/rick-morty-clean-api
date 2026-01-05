@@ -7,7 +7,7 @@
         "slim/slim": "^4.14",
         "slim/psr7": "^1.7",
         "guzzlehttp/guzzle": "^7.15",
-        "php-di/php-di": "^7.0"
+        "php-di/php-di": "^7.1"
     },
     "autoload": {
         "psr-4": {

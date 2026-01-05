@@ -4,32 +4,19 @@ namespace App\Infrastructure\External;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use App\Domain\DTO\TokenDTO;
+
 class RickAndMortyIntegration
 {
     private Client $client;
-    private string $baseUri = 'https://rickandmortyapi.com/api/';
-    private TokenDTO $token;
-    public function __construct(TokenDTO $token)
+
+    public function __construct(Client $client)
     {
-        $this->client = new Client([
-            'base_uri' => $this->baseUri,
-            'timeout'  => 5.0,
-            'headers'  => [
-                'Accept' => 'application/json',
-            ]
-        ]);
-        
-        $this->token = $token;
+        $this->client = $client;
     }
     public function getCharacter(int $id): ?array
     {
         try {
-            $response = $this->client->request('GET', "character/{$id}", [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $this->token->getToken(),
-                ]
-            ]);
+            $response = $this->client->request('GET', "character/{$id}");
 
             return json_decode($response->getBody()->getContents(), true);
             
