@@ -11,6 +11,9 @@ return function (ContainerBuilder $containerBuilder) {
             return new Client([
                 'base_uri' => 'https://rickandmortyapi.com/api/',
                 'timeout'  => 5.0,
+                'headers'  => [
+                    'Accept' => 'application/json',
+                ]
             ]);
         },
 
