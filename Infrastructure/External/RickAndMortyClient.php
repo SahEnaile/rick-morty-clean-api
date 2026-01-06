@@ -14,10 +14,10 @@ class RickAndMortyIntegration implements CharacterRepositoryInterface
     {
         $this->client = $client;
     }
-    public function getCharacter(int $id): ?array
+    public function getAllCharacter(): ?array
     {
         try {
-            $response = $this->client->request('GET', "character/{$id}");
+            $response = $this->client->request('GET', "character");
 
             return json_decode($response->getBody()->getContents(), true);
             
