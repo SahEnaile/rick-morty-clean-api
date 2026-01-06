@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Domain\UseCases;
+
 use App\Domain\Interfaces\CharacterRepositoryInterface;
 use Exception;
 Class GetAllCharacterUseCase{

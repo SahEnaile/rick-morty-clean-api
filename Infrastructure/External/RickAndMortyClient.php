@@ -5,6 +5,7 @@ namespace App\Infrastructure\External;
 use App\Domain\Interfaces\CharacterRepositoryInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Override;
 use RuntimeException; 
 class RickAndMortyIntegration implements CharacterRepositoryInterface
 {
@@ -22,6 +23,19 @@ class RickAndMortyIntegration implements CharacterRepositoryInterface
             return json_decode($response->getBody()->getContents(), true);
             
         } catch (RequestException $e) {
+            if ($e->hasResponse() && $e->getResponse()->getStatusCode() === 404) {
+                return null;
+            }
+            throw new RuntimeException("Erro na integração: " . $e->getMessage());
+        }
+    }
+    public function getCharacter(int $id): ?array
+    {
+        try {
+            $response = $this->client->request('GET', "character/{$id}");
+
+            return json_decode($response->getBody()->getContents(), true);
+        }  catch (RequestException $e) {
             if ($e->hasResponse() && $e->getResponse()->getStatusCode() === 404) {
                 return null;
             }
