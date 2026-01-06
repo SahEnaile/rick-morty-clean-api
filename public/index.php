@@ -9,7 +9,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = AppFactory::create();
 
 $app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write("Wubba Lubba Dub Dub! Rick and Morty API is running!");
+    $response->getBody()->write("Hello word");
     return $response;
 });
 
