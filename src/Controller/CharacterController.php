@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Domain\UseCases\GetAllCharacterUseCase;
-use GetCharacterUseCase;
+use App\Domain\UseCases\GetCharacterUseCase;
 use InvalidArgumentException;
 use Exception;
 use Psr\Http\Message\ServerRequestInterface as Request;

@@ -1,5 +1,7 @@
 <?php
 
+use App\Domain\Interfaces\CharacterRepositoryInterface;
+use App\Infrastructure\External\RickAndMortyIntegration;
 use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
 use GuzzleHttp\Client;
@@ -16,6 +18,8 @@ return function (ContainerBuilder $containerBuilder) {
                 ]
             ]);
         },
+
+        CharacterRepositoryInterface::class => DI\autowire(RickAndMortyIntegration::class),
 
     ]);
 };

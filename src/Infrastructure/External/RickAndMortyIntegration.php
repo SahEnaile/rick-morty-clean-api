@@ -5,7 +5,6 @@ namespace App\Infrastructure\External;
 use App\Domain\Interfaces\CharacterRepositoryInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use Override;
 use RuntimeException; 
 class RickAndMortyIntegration implements CharacterRepositoryInterface
 {

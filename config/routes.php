@@ -1,11 +1,11 @@
 <?php
 
 use App\Controller\CharacterController;
-use DI\Container;
+use Psr\Container\ContainerInterface;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
-return function(App $app, Container $container) {
+return function(App $app, ContainerInterface $container) {
     
     $app->group('/api', function (RouteCollectorProxy $group) {
         

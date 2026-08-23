@@ -1,16 +1,21 @@
 <?php
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
+use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$containerBuilder = new ContainerBuilder();
+
+$dependencies = require __DIR__ . '/../config/dependencies.php';
+$dependencies($containerBuilder);
+
+$container = $containerBuilder->build();
+
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write("Hello word");
-    return $response;
-});
+$routes = require __DIR__ . '/../config/routes.php';
+$routes($app, $container);
 
 $app->run();

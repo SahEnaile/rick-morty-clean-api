@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Domain\UseCases;
+
 use App\Domain\Interfaces\CharacterRepositoryInterface;
 use InvalidArgumentException;
 use Exception;
